@@ -1,6 +1,7 @@
 package com.mheducation.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mheducation.utils.Utils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DtoVehicle {
+    private Integer id;
     private String name;
     private String model;
     @JsonProperty("vehicle_class")
@@ -32,4 +34,8 @@ public class DtoVehicle {
     private String created;
     private String edited;
     private int count;
+
+    public Integer getId() {
+        return Utils.extractDigitsFromString(this.url);
+    }
 }
