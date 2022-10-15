@@ -32,10 +32,6 @@ public class StartshipServiceImp implements StarshipService {
     public DtoStarship setTotalInventary(Integer id, Integer total) {
         DtoStarship dtoStarship =  swApiExternalService.findStarshiById(id);
 
-        if (dtoStarship == null) {
-            throw new IllegalArgumentException("The vehicle does not exist.");
-        }
-
         Inventory inventory = inventoryService.setTotalInventary(dtoStarship.getUrl(), total);
 
         dtoStarship.setCount(inventory.getCount());
@@ -47,10 +43,6 @@ public class StartshipServiceImp implements StarshipService {
     public DtoStarship incrementInventary(Integer id, Integer total) {
         DtoStarship dtoStarship =  swApiExternalService.findStarshiById(id);
 
-        if (dtoStarship == null) {
-            throw new IllegalArgumentException("The starship does not exist.");
-        }
-
         Inventory inventory = inventoryService.incrementInventory(dtoStarship.getUrl(), total);
 
         dtoStarship.setCount(inventory.getCount());
@@ -61,10 +53,6 @@ public class StartshipServiceImp implements StarshipService {
     @Override
     public DtoStarship decrementInventary(Integer id, Integer total) {
         DtoStarship dtoStarship =  swApiExternalService.findStarshiById(id);
-
-        if (dtoStarship == null) {
-            throw new IllegalArgumentException("The starship does not exist.");
-        }
 
         Inventory inventory = inventoryService.decrementInventory(dtoStarship.getUrl(), total);
 

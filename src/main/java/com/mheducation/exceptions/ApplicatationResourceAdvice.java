@@ -17,9 +17,9 @@ public class ApplicatationResourceAdvice {
         return new ApiError(ex.getMessage());
     }
 
-    @ExceptionHandler(FeignException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ApiError handleFeignException(FeignException ex) {
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiError handleIllegalArgumentException(IllegalArgumentException ex) {
         return new ApiError(ex.getMessage());
     }
 

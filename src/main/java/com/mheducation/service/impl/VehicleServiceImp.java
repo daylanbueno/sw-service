@@ -31,10 +31,6 @@ public class VehicleServiceImp implements VehicleService {
 
         DtoVehicle dtoVehicle =  swApiExternalService.findVehicleById(id);
 
-        if (dtoVehicle == null) {
-            throw new IllegalArgumentException("The vehicle does not exist.");
-        }
-
         Inventory inventory = inventoryService.setTotalInventary(dtoVehicle.getUrl(), total);
 
         dtoVehicle.setCount(inventory.getCount());
@@ -48,13 +44,9 @@ public class VehicleServiceImp implements VehicleService {
 
        DtoVehicle dtoVehicle =  swApiExternalService.findVehicleById(id);
 
-       if (dtoVehicle == null) {
-           throw new IllegalArgumentException("The vehicle does not exist.");
-       }
+       Inventory inventory = inventoryService.incrementInventory(dtoVehicle.getUrl(), total);
 
-        Inventory inventory = inventoryService.incrementInventory(dtoVehicle.getUrl(), total);
-
-        dtoVehicle.setCount(inventory.getCount());
+       dtoVehicle.setCount(inventory.getCount());
 
        return dtoVehicle;
     }
@@ -63,10 +55,6 @@ public class VehicleServiceImp implements VehicleService {
     public DtoVehicle decrementInventary(Integer id, Integer total) {
 
         DtoVehicle dtoVehicle =  swApiExternalService.findVehicleById(id);
-
-        if (dtoVehicle == null) {
-            throw new IllegalArgumentException("The vehicle does not exist.");
-        }
 
         Inventory inventory = inventoryService.decrementInventory(dtoVehicle.getUrl(), total);
 
