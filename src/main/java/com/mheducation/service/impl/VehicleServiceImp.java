@@ -2,10 +2,8 @@ package com.mheducation.service.impl;
 
 import com.mheducation.dto.DtoVehicle;
 import com.mheducation.entity.Inventory;
-import com.mheducation.enums.InventoryType;
-import com.mheducation.exceptions.BusinessException;
 import com.mheducation.external.SwApiExternalService;
-import com.mheducation.repository.InventoryRepository;
+import com.mheducation.service.InventoryService;
 import com.mheducation.service.VehicleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,13 +13,13 @@ import org.springframework.stereotype.Service;
 public class VehicleServiceImp implements VehicleService {
 
     private final SwApiExternalService swApiExternalService;
-    private final InventoryRepository inventoryRepository;
+    private final InventoryService inventoryService;
     @Override
     public DtoVehicle findVehicleById(Integer id) {
 
         DtoVehicle dtoVehicle = swApiExternalService.findVehicleById(id);
 
-        Inventory inventory = inventoryRepository.findByUrl(dtoVehicle.getUrl());
+        Inventory inventory = inventoryService.findInventoryByUrl(dtoVehicle.getUrl());
 
         if (inventory != null) { dtoVehicle.setCount(inventory.getCount()); }
 
@@ -37,18 +35,7 @@ public class VehicleServiceImp implements VehicleService {
             throw new IllegalArgumentException("The vehicle does not exist.");
         }
 
-        Inventory inventory = inventoryRepository.findByUrl(dtoVehicle.getUrl());
-
-
-        if (inventory == null) {
-            inventory =  saveNewInventary(dtoVehicle.getUrl(), total);
-            dtoVehicle.setCount(inventory.getCount());
-            return dtoVehicle;
-        }
-
-        inventory.setCount(total);
-
-        inventoryRepository.save(inventory);
+        Inventory inventory = inventoryService.setTotalInventary(dtoVehicle.getUrl(), total);
 
         dtoVehicle.setCount(inventory.getCount());
 
@@ -65,17 +52,9 @@ public class VehicleServiceImp implements VehicleService {
            throw new IllegalArgumentException("The vehicle does not exist.");
        }
 
-       Inventory inventory = inventoryRepository.findByUrl(dtoVehicle.getUrl());
+        Inventory inventory = inventoryService.incrementInventory(dtoVehicle.getUrl(), total);
 
-       if (inventory == null) {
-           throw new BusinessException("There is no inventary to increment!");
-       }
-
-       inventory.setCount(inventory.getCount() + total);
-
-       inventoryRepository.save(inventory);
-
-       dtoVehicle.setCount(inventory.getCount());
+        dtoVehicle.setCount(inventory.getCount());
 
        return dtoVehicle;
     }
@@ -89,30 +68,11 @@ public class VehicleServiceImp implements VehicleService {
             throw new IllegalArgumentException("The vehicle does not exist.");
         }
 
-        Inventory inventory = inventoryRepository.findByUrl(dtoVehicle.getUrl());
-
-        if (inventory == null) {
-            throw new BusinessException("There is no inventary to decrement!");
-        }
-
-        if ((inventory.getCount() - total) < 0) {
-            throw new BusinessException("Cannot decrease because the value passed is greater than total inventory!");
-        }
-
-        inventory.setCount(inventory.getCount() - total);
-
-        inventoryRepository.save(inventory);
+        Inventory inventory = inventoryService.decrementInventory(dtoVehicle.getUrl(), total);
 
         dtoVehicle.setCount(inventory.getCount());
 
         return dtoVehicle;
     }
 
-
-    private Inventory saveNewInventary(String url, Integer total) {
-
-        Inventory entity = Inventory.builder().count(total).url(url).tipo(InventoryType.VEHICLE).build();
-
-        return inventoryRepository.save(entity);
-    }
 }
