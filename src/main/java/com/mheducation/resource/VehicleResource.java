@@ -17,9 +17,19 @@ public class VehicleResource {
     }
 
     @PostMapping("/{id}/inventory/{total}")
+    public DtoVehicle setTotalInventary(@PathVariable Integer id, @PathVariable Integer total) {
+        return vehicleService.setTotalInventary(id,total);
+    }
+
+
+    @PutMapping("/{id}/inventory-increment/{total}")
     public DtoVehicle incrementInventary(@PathVariable Integer id, @PathVariable Integer total) {
         return vehicleService.incrementInventary(id,total);
     }
 
+    @PutMapping("/{id}/inventory-decrement/{total}")
+    public DtoVehicle decrementInventary(@PathVariable Integer id, @PathVariable Integer total) {
+        return vehicleService.decrementInventary(id,total);
+    }
 
 }

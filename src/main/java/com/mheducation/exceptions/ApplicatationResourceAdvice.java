@@ -11,16 +11,22 @@ import java.net.ConnectException;
 @RestControllerAdvice
 public class ApplicatationResourceAdvice {
 
-    @ExceptionHandler(ConnectException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ApiError handleConnectException(ConnectException ex) {
-        return new ApiError("Communication failure with external service:"+ex.getMessage());
+    @ExceptionHandler(BusinessException.class)
+    @ResponseStatus(HttpStatus.PRECONDITION_FAILED)
+    public ApiError handleBusinessException(BusinessException ex) {
+        return new ApiError(ex.getMessage());
     }
 
     @ExceptionHandler(FeignException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiError handleFeignException(FeignException ex) {
         return new ApiError(ex.getMessage());
+    }
+
+    @ExceptionHandler(ConnectException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ApiError handleConnectException(ConnectException ex) {
+        return new ApiError("Communication failure with external service:"+ex.getMessage());
     }
 
 }

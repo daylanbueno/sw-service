@@ -7,4 +7,7 @@ public interface VehicleService {
 
     DtoVehicle incrementInventary(Integer id, Integer total);
 
+    DtoVehicle decrementInventary(Integer id, Integer total);
+
+    DtoVehicle setTotalInventary(Integer id, Integer total);
 }
