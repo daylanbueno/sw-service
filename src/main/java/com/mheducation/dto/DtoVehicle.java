@@ -31,4 +31,5 @@ public class DtoVehicle {
     private String url;
     private String created;
     private String edited;
+    private int count;
 }
