@@ -3,5 +3,8 @@ package com.mheducation.service;
 import com.mheducation.dto.DtoVehicle;
 
 public interface VehicleService {
-    DtoVehicle findVehicleById(Long id);
+    DtoVehicle findVehicleById(Integer id);
+
+    DtoVehicle incrementInventary(Integer id, Integer total);
+
 }

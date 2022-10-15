@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(url = "${SW_API_BASE_URL}", name = "swapi-service")
 public interface SwApiExternalService {
     @GetMapping(value = "/api/vehicles/{id}")
-    DtoVehicle findVehicleById(@PathVariable Long id);
+    DtoVehicle findVehicleById(@PathVariable Integer id);
 }
