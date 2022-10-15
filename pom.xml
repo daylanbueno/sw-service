@@ -12,7 +12,10 @@
 	<artifactId>sw-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>sw-service</name>
-	<description>Consume the information from SWAPI Extend the data model and implement functionality to keep track of the number of units for starships and vehicles. This can be achieved by adding the count property</description>
+	<description>
+		Consume the information from SWAPI Extend the data model and implement functionality to keep track of the number of units
+		for starships and vehicles. This can be achieved by adding the count property
+	</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
