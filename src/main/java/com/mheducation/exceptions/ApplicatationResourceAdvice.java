@@ -1,15 +1,12 @@
-package com.mheducation.exeptions;
+package com.mheducation.exceptions;
 
 import feign.FeignException;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.net.ConnectException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class ApplicatationResourceAdvice {

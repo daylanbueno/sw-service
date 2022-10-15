@@ -1,4 +1,4 @@
-package com.mheducation.exeptions;
+package com.mheducation.exceptions;
 
 import lombok.Data;
 
