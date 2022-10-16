@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "13ea76d0-835f-4725-9e42-c2dc43252747",
+		"name": "SW-SERVICE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3433780"
+	},
+	"item": [
+		{
+			"name": "vehicles",
+			"item": [
+				{
+					"name": "find-vehicle-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8181/vehicles/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"vehicles",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set-total-inventory-vehicle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8181/api/vehicles/4/inventory/10",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"api",
+								"vehicles",
+								"4",
+								"inventory",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "increment-inventory-vehicle",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8181/api/vehicles/4/inventory-increment/10",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"api",
+								"vehicles",
+								"4",
+								"inventory-increment",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decrement-inventory-vehicle Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8181/api/vehicles/4/inventory-decrement/10",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"api",
+								"vehicles",
+								"4",
+								"inventory-decrement",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "starthip",
+			"item": [
+				{
+					"name": "find-starship-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8181/api/starships/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"api",
+								"starships",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set-total-inventory-starships",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8181/api/starships/9/inventory/10",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"api",
+								"starships",
+								"9",
+								"inventory",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "increment-inventory-starships",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8181/api/starships/9/inventory-increment/10",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"api",
+								"starships",
+								"9",
+								"inventory-increment",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "decrement-inventory-starships",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8181/api/starships/4/inventory-decrement/10",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"api",
+								"starships",
+								"4",
+								"inventory-decrement",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

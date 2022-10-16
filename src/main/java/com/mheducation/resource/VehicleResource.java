@@ -3,6 +3,7 @@ package com.mheducation.resource;
 import com.mheducation.dto.DtoVehicle;
 import com.mheducation.service.VehicleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,6 +18,7 @@ public class VehicleResource {
     }
 
     @PostMapping("/{id}/inventory/{total}")
+    @ResponseStatus(HttpStatus.CREATED)
     public DtoVehicle setTotalInventary(@PathVariable Integer id, @PathVariable Integer total) {
         return vehicleService.setTotalInventary(id,total);
     }

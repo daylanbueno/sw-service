@@ -3,6 +3,7 @@ package com.mheducation.resource;
 import com.mheducation.dto.DtoStarship;
 import com.mheducation.service.StarshipService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,6 +19,7 @@ public class StarshipResource {
 
 
     @PostMapping("/{id}/inventory/{total}")
+    @ResponseStatus(HttpStatus.CREATED)
     public DtoStarship setTotalInventary(@PathVariable Integer id, @PathVariable Integer total) {
         return starshipService.setTotalInventary(id,total);
     }
