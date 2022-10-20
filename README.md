@@ -24,6 +24,16 @@ Example: decrement by x units the
 number Death Stars in the inventory for
 starships
 
+#### About the process.
+- I extended the model of SWAPI.
+- I created an external call to SWAPI to get vehicles and starhsip.
+- I created an inventory entity to store the number of starships and vehicles
+- I created an endpoint for each requirement and observed the validation rules.
+- I created the services, the layer where I deal with the business rules.
+- Created Interceptor for error handling.
+- I created profiles for each environment. The development environment used in-memory database.
+- I Created unit tests using JUnit and mockito.
+
 ### Tecnologies
 - Java
 - JDK 17
