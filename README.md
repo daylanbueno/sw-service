@@ -67,3 +67,5 @@ You just need to import in postman and you will be able to do the tests.
 ![image](https://user-images.githubusercontent.com/17939912/196011066-0a3d01fd-96a4-4a48-ac26-8fa60844e3ee.png)
 
 
+![sw](https://user-images.githubusercontent.com/17939912/198038829-88cc410f-ca4c-4602-899b-ec6072a8365a.gif)
+
